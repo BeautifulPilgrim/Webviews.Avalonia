@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net9.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -12,7 +12,8 @@
 		<PackageReference Include="Avalonia.Themes.Fluent" />
 		<PackageReference Include="Avalonia.ReactiveUI" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" /> 
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
+		<PackageReference Include="Masa.Blazor" />
 	</ItemGroup>
 
 	<ItemGroup>

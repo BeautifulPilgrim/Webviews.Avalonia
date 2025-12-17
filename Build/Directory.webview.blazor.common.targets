@@ -5,6 +5,8 @@
 		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 		<StaticWebAssetProjectMode>Root</StaticWebAssetProjectMode>
 		<!--<CoreCompileDependsOn Condition="'$(PublishProtocol)' == 'ClickOnce' or '$(PublishProtocol)' == 'FileSystem'">$(CoreCompileDependsOn);StaticWebAssetsPrepareForRun</CoreCompileDependsOn>-->
+		<_NormalizedPath>$([MSBuild]::NormalizePath('wwwroot\%(RelativePath)'))</_NormalizedPath>
+		<_RelativeTargetPath>$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(_NormalizedPath)'))</_RelativeTargetPath>
 	</PropertyGroup>
 	<Target Name="_StaticWebAssetsComputeFilesToBuild" AfterTargets="GetCopyToOutputDirectoryItems" DependsOnTargets="ResolveProjectReferences" >
 		<ItemGroup>
@@ -13,7 +15,10 @@
        -->
 			<_ExternalBuildStaticWebAsset Include="%(StaticWebAsset.FullPath)" Condition="'%(SourceType)' != ''">
 				<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-				<TargetPath>$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)','$([MSBuild]::NormalizePath('wwwroot\%(BasePath)\%(RelativePath)'))'))</TargetPath>
+				<!--<TargetPath>$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)','$([MSBuild]::NormalizePath('wwwroot\%(BasePath)\%(RelativePath)'))'))</TargetPath>-->
+				<!--<TargetPath>$([MSBuild]::NormalizePath('wwwroot\%(RelativePath)'))</TargetPath>-->
+				<!--<TargetPath>wwwroot\%(RelativePath)</TargetPath>-->
+				<TargetPath>$(_RelativeTargetPath)</TargetPath>
 			</_ExternalBuildStaticWebAsset>
 			<!-- Remove any existing external static web asset that might have been added as part of the
            regular publish pipeline. -->
@@ -23,7 +28,7 @@
 	</Target>
 
 	<Target Name="_RemoveStaticWebAssetsDevelopmentManifest" BeforeTargets="GetCopyToOutputDirectoryItems" DependsOnTargets="ResolveProjectReferences" >
-		 <!--Remove the development manifest from the output since its not used and it will otherwise get incorrectly loaded in production.--> 
+		<!--Remove the development manifest from the output since its not used and it will otherwise get incorrectly loaded in production.-->
 		<ItemGroup>
 			<ContentWithTargetPath Remove="$(StaticWebAssetDevelopmentManifestPath)" />
 		</ItemGroup>

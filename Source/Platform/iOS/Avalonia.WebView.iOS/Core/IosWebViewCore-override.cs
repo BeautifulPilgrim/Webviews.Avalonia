@@ -37,9 +37,9 @@ partial class IosWebViewCore
         string? resultString = default;
         var messageJSStringLiteral = JavaScriptEncoder.Default.Encode(javaScript);
         WebView.EvaluateJavaScript(javascript: $"{_dispatchMessageCallback}(\"{messageJSStringLiteral}\")",
-                                   completionHandler: (NSObject result, NSError error) =>
+                                   completionHandler: (result, error) =>
                                    {
-                                       resultString = result.ToString();
+                                       resultString = result?.ToString();
                                    });
 
         return Task.FromResult(resultString); ;
@@ -98,7 +98,7 @@ partial class IosWebViewCore
 
         var messageJSStringLiteral = JavaScriptEncoder.Default.Encode(webMessageAsJson);
         WebView.EvaluateJavaScript(javascript: $"{_dispatchMessageCallback}(\"{messageJSStringLiteral}\")",
-                                   completionHandler: (NSObject result, NSError error) =>
+                                   completionHandler: (result, error) =>
                                    {
 
                                    });
@@ -112,7 +112,7 @@ partial class IosWebViewCore
 
         var messageJSStringLiteral = JavaScriptEncoder.Default.Encode(webMessageAsString);
         WebView.EvaluateJavaScript(javascript: $"{_dispatchMessageCallback}(\"{messageJSStringLiteral}\")",
-                                   completionHandler: (NSObject result, NSError error) =>
+                                   completionHandler: (result, error) =>
                                    {
 
                                    });

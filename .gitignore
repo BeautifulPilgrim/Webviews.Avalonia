@@ -396,12 +396,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/Binary/net7.0
 /Binary
 /.idea/.idea.Avalonia.WebView/.idea/indexLayout.xml
 /.idea
 /_blazorwebview
-/_webview/netstandard2.0
+/_webview
 /_nuget
 /Source/*.DS_Store
 /*.DS_Store

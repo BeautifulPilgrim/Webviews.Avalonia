@@ -3,7 +3,8 @@
 @inject GlobalConfig GlobalConfig
 @implements IDisposable
 
-<MNavigationDrawer @bind-Value="Visible"
+<MNavigationDrawer @bind-Visible="Visible"
+    
                    Class="@($"navigation {ComputedNavigationClass}")"
                    Width=300
                    MiniVariantWidth=80

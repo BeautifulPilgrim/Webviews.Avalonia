@@ -23,7 +23,7 @@ public partial class TodoDetail
     public TodoDto? SelectItem { get; set; }
 
     [Parameter]
-    public EventCallback<bool> ValueChanged { get; set; }
+    public EventCallback<bool?> ValueChanged { get; set; }
 
     [Inject]
     public NavigationManager NavigationManager { get; set; } = default!;

@@ -1,4 +1,5 @@
-﻿namespace SampleBlazorWebViewShared.Pages.Dashboard;
+﻿
+namespace SampleBlazorWebViewShared.Pages.Dashboard;
 
 public partial class ECommerce : ProComponentBase
 {
@@ -25,7 +26,7 @@ public partial class ECommerce : ProComponentBase
 
     protected override void OnInitialized()
     {
-        MasaBlazor.Breakpoint.OnUpdate += OnPropertyChanged;
+        MasaBlazor.BreakpointChanged += OnPropertyChanged;
         MasaBlazor.Application.PropertyChanged += OnPropertyChanged;
 
         _orderChart = new
@@ -379,23 +380,23 @@ public partial class ECommerce : ProComponentBase
         };
     }
 
-    private Task OnPropertyChanged()
+    private void OnPropertyChanged(object? sender, BreakpointChangedEventArgs e)
     {
         if (NavHelper.CurrentUri.EndsWith("dashboard/ecommerce"))
         {
             InvokeAsync(StateHasChanged);
         }
-        return Task.CompletedTask;
     }
+
 
     private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        OnPropertyChanged();
+        OnPropertyChanged(null, new BreakpointChangedEventArgs());
     }
 
     public void Dispose()
     {
-        MasaBlazor.Breakpoint.OnUpdate -= OnPropertyChanged;
+        MasaBlazor.BreakpointChanged -= OnPropertyChanged;
         MasaBlazor.Application.PropertyChanged -= OnPropertyChanged;
     }
 }

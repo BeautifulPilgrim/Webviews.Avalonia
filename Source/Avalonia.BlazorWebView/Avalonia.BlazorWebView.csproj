@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net9.0</TargetFrameworks>
 		<RootNamespace>AvaloniaBlazorWebView</RootNamespace>
 	</PropertyGroup>
- 
+
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
@@ -19,5 +19,5 @@
 		<ProjectReference Include="..\AvaloniaWebView.Shared\AvaloniaWebView.Shared.csproj" />
 		<ProjectReference Include="..\Toolkit.Shared\Toolkit.Shared.csproj" />
 	</ItemGroup>
-	
+
 </Project>

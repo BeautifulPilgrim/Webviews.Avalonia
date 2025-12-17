@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net7.0</TargetFrameworks>
+		<TargetFrameworks>net9.0</TargetFrameworks>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 	</PropertyGroup>
 
@@ -10,8 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia.Desktop" /> 
-		<PackageReference Include="AntDesign.Toolkit" /> 
+		<PackageReference Include="Avalonia.Desktop" />
+		<PackageReference Include="AntDesign.Toolkit" />
 	</ItemGroup>
 
 	<ItemGroup>
