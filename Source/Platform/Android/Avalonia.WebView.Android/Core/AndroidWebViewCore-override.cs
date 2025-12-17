@@ -99,7 +99,7 @@ partial class AndroidWebViewCore
         if (webView is null)
             return false;
 
-        webView.LoadData(htmlContent, default, default);
+        webView.LoadDataWithBaseURL(null, htmlContent, default, default, null);
         return true;
     }
 
@@ -156,8 +156,8 @@ partial class AndroidWebViewCore
         }
         catch (Exception)
         {
-             
-        }    
+
+        }
 
         return false;
     }
